@@ -70,6 +70,10 @@ Congrats! You're now ready to add some materials to your platform.
 
 ### Adding Material
 
+Follow this video (in German) or the steps below:
+
+https://user-images.githubusercontent.com/22657579/175923481-e0268c6a-cc75-493f-97d4-e64693baeb85.mp4
+
 Every user is capable of adding `Material`. Once you log in, you'll see a plus symbol next to
 the main menu. Give your 'Material' a title and add some images and click 'Entwurf anlegen'.
 
