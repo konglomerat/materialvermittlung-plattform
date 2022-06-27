@@ -1,0 +1,8 @@
+default:
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\MaterialvermittlungContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension: null

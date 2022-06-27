@@ -1,0 +1,27 @@
+authentication_token:
+    path: /api/authentication_token
+user_info:
+    path: /api/user_info
+    controller: App\Controller\UserInfoController::index
+user_accept_terms:
+    path: /api/user_accept_terms
+    controller: App\Controller\PasswordController::acceptTerms
+client_config:
+    path: /api/client_config
+    controller: App\Controller\ClientConfigController::index
+blog_feed:
+    path: /api/blog_feed
+    controller: App\Controller\BlogFeedProxyController::index
+logout:
+    path: /api/logout
+    controller: App\Controller\LogoutController::logout
+dashboard:
+    path: /admin
+    controller: App\Controller\Admin\DashboardController::index
+graphiql:
+    path: /api/graphiql
+    controller: api_platform.graphql.action.graphiql
+activate:
+    path: /account/aktivieren
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.yaml"

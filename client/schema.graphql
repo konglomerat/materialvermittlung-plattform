@@ -1,0 +1,583 @@
+type InflowCollection implements Node {
+  id: ID!
+  _id: Int!
+  material: Material!
+  createdOn: String
+  comment: String
+  quantity: Float!
+}
+
+"""Connection for InflowCollection."""
+type InflowCollectionConnection {
+  edges: [InflowCollectionEdge]
+  pageInfo: InflowCollectionPageInfo!
+  totalCount: Int!
+}
+
+"""Edge of InflowCollection."""
+type InflowCollectionEdge {
+  node: InflowCollection
+  cursor: String!
+}
+
+"""Information about the current page."""
+type InflowCollectionPageInfo {
+  endCursor: String
+  startCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+input InflowFilter_order {
+  createdOn: String
+}
+
+type InflowItem implements Node {
+  id: ID!
+  _id: Int!
+  material: Material!
+  createdOn: String
+  comment: String
+  quantity: Float!
+}
+
+"""
+The `Iterable` scalar type represents an array or a Traversable with any kind of data.
+"""
+scalar Iterable
+
+type Material implements Node {
+  id: ID!
+
+  """Edgecase:"""
+  isVisible: Boolean
+  isNew: Boolean
+  validationResults: Iterable!
+  inflowQuantity: Float!
+  outflowQuantity: Float!
+  pickedUpQuantity: Float!
+  reservedQuantity: Float!
+  availableQuantity: Float!
+  _id: Int!
+  title: String
+  quantityUnit: String!
+  readableQuantityUnit: String
+  description: String
+  dimensions: String
+  color: String
+  images: [MediaObject]
+  updatedAt: String
+  publishAt: String
+  visibleUntil: String
+  isDraft: Boolean
+  storage: Storage
+  organization: Organization
+  outflows(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    exists: OutflowFilter_exists
+    material_id: Int
+    material_id_list: [Int]
+    reservingOrganization_id: Int
+    reservingOrganization_id_list: [Int]
+    material_organization_id: Int
+    material_organization_id_list: [Int]
+    order: OutflowFilter_order
+    search: String
+  ): OutflowCollectionConnection
+  inflows(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    material_id: Int
+    material_id_list: [Int]
+    order: InflowFilter_order
+  ): InflowCollectionConnection
+  isFinished: Boolean
+  disallowPartialReservations: Boolean
+}
+
+"""Connection for Material."""
+type MaterialConnection {
+  edges: [MaterialEdge]
+  pageInfo: MaterialPageInfo!
+  totalCount: Int!
+}
+
+"""Edge of Material."""
+type MaterialEdge {
+  node: Material
+  cursor: String!
+}
+
+input MaterialFilter_order {
+  publishAt: String
+  visibleUntil: String
+  updatedAt: String
+}
+
+input MaterialFilter_publishAt {
+  before: String
+  strictly_before: String
+  after: String
+  strictly_after: String
+}
+
+input MaterialFilter_visibleUntil {
+  before: String
+  strictly_before: String
+  after: String
+  strictly_after: String
+}
+
+"""Information about the current page."""
+type MaterialPageInfo {
+  endCursor: String
+  startCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+type MediaObject implements Node {
+  id: ID!
+  detailsUrl: String
+  previewUrl: String
+  thumbnailUrl: String
+  sortIndex: Int
+}
+
+type Mutation {
+  """Creates a Inflow."""
+  createInflow(input: createInflowInput!): createInflowPayload
+
+  """Updates a Inflow."""
+  updateInflow(input: updateInflowInput!): updateInflowPayload
+
+  """Deletes a Inflow."""
+  deleteInflow(input: deleteInflowInput!): deleteInflowPayload
+
+  """Creates a Material."""
+  createMaterial(input: createMaterialInput!): createMaterialPayload
+
+  """Updates a Material."""
+  updateMaterial(input: updateMaterialInput!): updateMaterialPayload
+
+  """Uploads a MediaObject."""
+  uploadMediaObject(input: uploadMediaObjectInput!): uploadMediaObjectPayload
+
+  """Deletes a MediaObject."""
+  deleteMediaObject(input: deleteMediaObjectInput!): deleteMediaObjectPayload
+
+  """Updates a MediaObject."""
+  updateMediaObject(input: updateMediaObjectInput!): updateMediaObjectPayload
+
+  """Creates a Outflow."""
+  createOutflow(input: createOutflowInput!): createOutflowPayload
+
+  """Updates a Outflow."""
+  updateOutflow(input: updateOutflowInput!): updateOutflowPayload
+
+  """CustomDeletes a Outflow."""
+  customDeleteOutflow(input: customDeleteOutflowInput!): customDeleteOutflowPayload
+
+  """ApproveReservations a Outflow."""
+  approveReservationOutflow(input: approveReservationOutflowInput!): approveReservationOutflowPayload
+
+  """PickedUpReservations a Outflow."""
+  pickedUpReservationOutflow(input: pickedUpReservationOutflowInput!): pickedUpReservationOutflowPayload
+}
+
+"""A node, according to the Relay specification."""
+interface Node {
+  """The id of this node."""
+  id: ID!
+}
+
+type Organization implements Node {
+  id: ID!
+  _id: Int!
+  name: String!
+  storages: [Storage]
+  imprint: String
+}
+
+type OutflowCollection implements Node {
+  id: ID!
+  _id: Int!
+  material: Material
+  createdOn: String
+  comment: String
+  reservingOrganization: Organization
+  quantity: Float
+  pickedUpAt: String
+  reservationApprovedAt: String
+}
+
+"""Connection for OutflowCollection."""
+type OutflowCollectionConnection {
+  edges: [OutflowCollectionEdge]
+  pageInfo: OutflowCollectionPageInfo!
+  totalCount: Int!
+}
+
+"""Edge of OutflowCollection."""
+type OutflowCollectionEdge {
+  node: OutflowCollection
+  cursor: String!
+}
+
+"""Information about the current page."""
+type OutflowCollectionPageInfo {
+  endCursor: String
+  startCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+input OutflowFilter_exists {
+  pickedUpAt: Boolean
+  reservingOrganization: Boolean
+}
+
+input OutflowFilter_order {
+  pickedUpAt: String
+  reservationApprovedAt: String
+  createdOn: String
+}
+
+type OutflowItem implements Node {
+  id: ID!
+  _id: Int!
+  material: Material
+  createdOn: String
+  comment: String
+  reservingOrganization: Organization
+  quantity: Float
+  pickedUpAt: String
+  reservationApprovedAt: String
+}
+
+type Query {
+  node(id: ID!): Node
+  inflows(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    material_id: Int
+    material_id_list: [Int]
+    order: InflowFilter_order
+  ): InflowCollectionConnection
+  materials(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    organization_id: Int
+    organization_id_list: [Int]
+    isDraft: Boolean
+    isFinished: Boolean
+    publishAt: MaterialFilter_publishAt
+    visibleUntil: MaterialFilter_visibleUntil
+    order: MaterialFilter_order
+    hasAvailableQuantity: Boolean
+    search: String
+  ): MaterialConnection
+  material(id: ID!): Material
+  outflows(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    exists: OutflowFilter_exists
+    material_id: Int
+    material_id_list: [Int]
+    reservingOrganization_id: Int
+    reservingOrganization_id_list: [Int]
+    material_organization_id: Int
+    material_organization_id_list: [Int]
+    order: OutflowFilter_order
+    search: String
+  ): OutflowCollectionConnection
+}
+
+type Storage implements Node {
+  id: ID!
+  _id: Int!
+  contact: String
+  addressStreet: String
+  addressCity: String
+  addressPostalCode: String
+  notes: String
+  isPublic: Boolean
+  organization: Organization!
+  materials(
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    organization_id: Int
+    organization_id_list: [Int]
+    isDraft: Boolean
+    isFinished: Boolean
+    publishAt: MaterialFilter_publishAt
+    visibleUntil: MaterialFilter_visibleUntil
+    order: MaterialFilter_order
+    hasAvailableQuantity: Boolean
+    search: String
+  ): MaterialConnection
+  title: String!
+}
+
+"""
+The `Upload` type represents a file to be uploaded in the same HTTP request as
+"""
+scalar Upload
+
+input approveReservationOutflowInput {
+  """Id of outflow"""
+  id: ID!
+  clientMutationId: String
+}
+
+type approveReservationOutflowPayload {
+  outflow: OutflowItem
+  clientMutationId: String
+}
+
+input createInflowInput {
+  material: String!
+  comment: String
+  quantity: Float!
+  clientMutationId: String
+}
+
+type createInflowPayload {
+  inflow: InflowItem
+  clientMutationId: String
+}
+
+input createMaterialInput {
+  title: String
+  quantityUnit: String!
+  description: String
+  dimensions: String
+  color: String
+  publishAt: String
+  visibleUntil: String
+  isDraft: Boolean
+  storage: String
+  isFinished: Boolean
+  disallowPartialReservations: Boolean
+  clientMutationId: String
+}
+
+type createMaterialPayload {
+  material: Material
+  clientMutationId: String
+}
+
+input createOutflowInput {
+  material: String
+  comment: String
+  reservingOrganization: String
+  quantity: Float
+  clientMutationId: String
+}
+
+type createOutflowPayload {
+  outflow: OutflowItem
+  clientMutationId: String
+}
+
+input customDeleteOutflowInput {
+  """Id of outflow"""
+  id: ID!
+  clientMutationId: String
+}
+
+type customDeleteOutflowPayload {
+  outflow: OutflowItem
+  clientMutationId: String
+}
+
+input deleteInflowInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type deleteInflowPayload {
+  inflow: InflowItem
+  clientMutationId: String
+}
+
+input deleteMediaObjectInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type deleteMediaObjectPayload {
+  mediaObject: MediaObject
+  clientMutationId: String
+}
+
+input pickedUpReservationOutflowInput {
+  """Id of outflow"""
+  id: ID!
+
+  """Quantity picked up"""
+  quantity: Float!
+  clientMutationId: String
+}
+
+type pickedUpReservationOutflowPayload {
+  outflow: OutflowItem
+  clientMutationId: String
+}
+
+input updateInflowInput {
+  id: ID!
+  material: String
+  comment: String
+  quantity: Float
+  clientMutationId: String
+}
+
+type updateInflowPayload {
+  inflow: InflowItem
+  clientMutationId: String
+}
+
+input updateMaterialInput {
+  id: ID!
+  storage: ID
+  title: String
+  description: String
+  quantityUnit: String
+  dimensions: String
+  color: String
+  publishAt: String
+  visibleUntil: String
+  isDraft: Boolean
+  disallowPartialReservations: Boolean
+  isFinished: Boolean
+  acceptTermsAndConditions: Boolean
+  clientMutationId: String
+}
+
+type updateMaterialPayload {
+  material: Material
+  clientMutationId: String
+}
+
+input updateMediaObjectInput {
+  id: ID!
+  sortIndex: Int
+  clientMutationId: String
+}
+
+type updateMediaObjectPayload {
+  mediaObject: MediaObject
+  clientMutationId: String
+}
+
+input updateOutflowInput {
+  id: ID!
+  material: String
+  comment: String
+  reservingOrganization: String
+  quantity: Float
+  clientMutationId: String
+}
+
+type updateOutflowPayload {
+  outflow: OutflowItem
+  clientMutationId: String
+}
+
+input uploadMediaObjectInput {
+  """File to upload"""
+  file: Upload
+
+  """Id of material"""
+  materialId: ID!
+
+  """Index that will be used for sorting images of a material"""
+  sortIndex: Int
+  clientMutationId: String
+}
+
+type uploadMediaObjectPayload {
+  mediaObject: MediaObject
+  clientMutationId: String
+}
+

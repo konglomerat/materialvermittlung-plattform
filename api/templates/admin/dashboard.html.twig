@@ -1,0 +1,17 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Administration' %}
+
+{% block page_content %}
+    <style>
+        p { max-width: 800px; }
+    </style>
+	<p>
+		Hier kannst du neue <strong>Nutzer anlegen</strong> und deine <strong>Organisation</strong> und deine <strong>Lager verwalten</strong>.
+	</p>
+	<p>
+		Material kannst du <strong><a href="/">hier</a></strong> anlegen und verwalten.
+	</p>
+
+{% endblock %}

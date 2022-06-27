@@ -1,0 +1,26 @@
+liip_imagine:
+    # As mentioned above, gd, imagick or gmagick are possible
+    driver: "imagick"
+    # This is where all the filters sets are located
+    filter_sets:
+        # Used in lists
+        thumbnail:
+            quality: 65
+            filters:
+                relative_resize:
+                    heighten: 200
+
+        # Used for Tiles -> correctly fitting dimensions
+        # landscape will be cropped
+        preview:
+            quality: 65
+            filters:
+                relative_resize:
+                    heighten: 600
+
+        # Used for zooming in (currently not used)
+        details:
+            filters:
+                downscale:
+                    max: [1200, 1200]
+

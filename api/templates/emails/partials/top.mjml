@@ -1,0 +1,2 @@
+<mj-image width="200px" src="https://zuendstoffe.materialvermittlung.org/logo.png"></mj-image>
+<mj-divider border-color="{{branding_colorPrimary}}"/>

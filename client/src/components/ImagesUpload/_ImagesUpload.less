@@ -1,0 +1,119 @@
+/*
+ * Copyright (c) 2022 Sandstorm Media GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.images-upload {
+    width: 100%;
+}
+
+.images-upload__list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.images-upload__remove {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.images-upload__move {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.images-upload__move-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.images-upload__move-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.images-upload__button {
+    border: 2px dashed @primary-color;
+    cursor: pointer;
+}
+
+.images-upload__button--disabled {
+    opacity: 0.3;
+    border-color: #000;
+    cursor: not-allowed;
+}
+
+.images-upload__hint {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.images-upload__tile-wrapper {
+    position: relative;
+    width: 20%;
+    padding: 2px;
+}
+
+.images-upload__tile {
+    position: relative;
+    padding-top: 100%;
+    background-color: rgb(235, 235, 235);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.images-upload__tile-content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 800px) and (max-width: 999px) {
+    .images-upload__tile-wrapper {
+        width: 25%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 799px) {
+    .images-upload__tile-wrapper {
+        width: 33%;
+    }
+}
+
+@media (max-width: 599px) {
+    .images-upload__tile-wrapper {
+        width: 50%;
+    }
+}

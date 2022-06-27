@@ -1,0 +1,11 @@
+
+{
+    "schema": "./schema.graphql",
+    "generates": {
+        "./src/graphql/types/generated.d.ts": {
+            "plugins": [
+                "typescript"
+            ]
+        }
+    }
+}

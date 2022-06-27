@@ -1,0 +1,15 @@
+{% set activationUrl = url('activate', {'t': activationToken}) %}
+
+<h1>Willkommen {{ name }}</h1>
+
+<p>
+    Für dich wurde ein Account in der Materialvermittlung angelegt
+</p>
+
+<p>
+    <a href="{{ activationUrl }}">Klick hier, um deinen Account zu aktivieren.</a>
+</p>
+
+<p>
+    Oder kopiere diesen Link in deinen Browser: {{ activationUrl }}
+</p>

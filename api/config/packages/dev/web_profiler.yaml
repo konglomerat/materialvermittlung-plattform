@@ -1,0 +1,11 @@
+web_profiler:
+    # REALLY STRANGE BUG: for some reason the toolbar loads the react client js and css
+    # breaking the styling of the admin ui because of same css selectors used.
+    # This could be fixed by using prefixes for css classes however we would still be
+    # leading css and js, that does not belong to the admin ui.
+    # TODO: find out and fix root cause.
+    toolbar: false
+    intercept_redirects: false
+
+framework:
+    profiler: { only_exceptions: false }

@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2022 Sandstorm Media GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.flowProgress {
+    height: 6px;
+    width: auto;
+    display: flex;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.flowProgress__pickedup,
+.flowProgress__reserved,
+.flowProgress__allpickedup {
+    box-sizing: border-box;
+    height: 100%;
+    border-right: 2px solid #fff;
+}
+
+.flowProgress__pickedup {
+    background: #1890ff;
+}
+
+.flowProgress__reserved {
+    background: #cf5438;
+}
+
+.flowProgress__allpickedup {
+    background: rgb(56, 158, 13);
+}

@@ -1,0 +1,69 @@
+/*
+ * Copyright (c) 2022 Sandstorm Media GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.flow-line {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.flow-line__left {
+    position: relative;
+    display: flex;
+    width: 150px;
+    flex-shrink: 0.5;
+}
+
+.flow-line__right {
+    position: relative;
+    display: flex;
+    width: 70%;
+}
+
+.flow-line__quantity {
+    width: 100%;
+}
+.flow-line__unit {
+    width: 80px;
+    text-align: left;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+.flow-line__comment {
+    width: 100%;
+}
+.flow-line__actions {
+    margin-left: 20px;
+}
+
+@media (max-width: 599px) {
+    .flow-line {
+        flex-direction: column;
+    }
+    .flow-line__left {
+        width: 100%;
+    }
+    .flow-line__right {
+        width: 100%;
+    }
+
+    .flow-line__unit,
+    .flow-line__actions {
+        width: 100px;
+    }
+}

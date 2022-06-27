@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Tests\Behat\:
+        resource: '../tests/Behat/*'
+
+    # !!! When we run two HTTP requests after each other, we do not want to reset services when triggering
+    # !!! the 2nd HTTP call (see Kernel::handle, calling Kernel::boot, calling $this->container->get('services_resetter')->reset())
+    #
+    # if the reset would take place, we would lose our authentication status (TokenStorage is reset), and also the Doctrine Unit of Work
+    # (leading to the same entities being different objects).
+    #
+    # We DISABLE the services_resetter using the following two lines; and this effectively fixes these issues.
+    # NOTE: we do not 100% know if there are negative side effects doing this. Time will tell :)
+    services_resetter:
+        synthetic: true
+
+    App\Service\MailService:
+        class: App\Service\TestMailService

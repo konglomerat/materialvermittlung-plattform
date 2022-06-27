@@ -1,0 +1,9 @@
+<mj-head>
+    <mj-attributes>
+        <mj-all
+            font-family="{{branding_fontFamily}}"
+            align="{{branding_alignment}}"
+            font-size="{{branding_fontSizeText}}"
+        />
+    </mj-attributes>
+</mj-head>

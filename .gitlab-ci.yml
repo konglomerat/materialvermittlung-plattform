@@ -1,0 +1,34 @@
+stages:
+    - package
+    - deploy
+
+package_app:
+    stage: package
+    image: docker-hub.sandstorm.de/docker-infrastructure/php-app/build:7.3-v1
+    only:
+        - main
+    tags:
+        - docker
+        - privileged
+    script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - bash ./build_prod.sh $CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG
+        - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG
+
+deploy_production:
+    stage: deploy
+    image:
+        name: bitnami/kubectl:1.15.0
+        entrypoint: [""]
+    only:
+        - main
+        - kubernetes
+    environment:
+        name: production
+    script:
+        - export KUBECONFIG=$KUBECONFIG_K3S2021
+        - kubectl get namespace materialvermittlung
+        - kubectl apply -f deployment/production/database.yaml
+        - kubectl apply -f deployment/production/app.yaml
+        # enforce a redeploy by changing the release identifier
+        - 'kubectl -n materialvermittlung patch --type merge OneContainerOnePort app -p "{\"spec\":{\"releaseIdentifier\": \"$CI_JOB_ID\"}}"'

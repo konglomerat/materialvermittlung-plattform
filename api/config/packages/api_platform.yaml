@@ -1,0 +1,16 @@
+api_platform:
+    title: Hello API Platform
+    version: 1.0.0
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        json: ['application/merge-patch+json']
+    swagger:
+        versions: [3]
+    formats:
+        graphql: ['application/graphql']
+        multipart: ['multipart/form-data']
+        json: ['application/json']
+    graphql:
+        graphiql:
+            enabled: true

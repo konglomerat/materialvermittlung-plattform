@@ -1,0 +1,9 @@
+/.env
+/docker-compose.override.yaml
+/docker-compose.override.yml
+node_modules
+
+.idea/
+.DS_Store
+
+/backup

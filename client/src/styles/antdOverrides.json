@@ -1,0 +1,7 @@
+{
+  "border-radius-base": "0px",
+  "layout-header-background": "white",
+  "layout-header-padding": "0 24px",
+  "layout-header-height": "80px",
+  "font-family": "'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';"
+}

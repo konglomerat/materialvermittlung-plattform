@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 2022 Sandstorm Media GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program.
+ * If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.menu__container {
+    line-height: 1.6;
+    position: fixed;
+    right: 0;
+    margin-top: -5px;
+    padding-left: @margin-sm;
+    padding-right: @margin-sm;
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+.menu__panel {
+    background: white;
+    box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu__user-info {
+    padding: @padding-sm;
+}
+
+.menu__item {
+    display: block;
+    border-top: 1px solid #f1f1f1;
+    padding: @padding-sm;
+    cursor: pointer;
+    color: @primary-color;
+}
+
+.menu__item--small {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 12px;
+}
+
+.menu__item:hover {
+    background: #f6f6f6;
+}
+
+.menu__group {
+    display: block;
+    width: 100%;
+    padding-top: @padding-sm;
+    padding-left: @padding-sm;
+    padding-right: @padding-sm;
+    padding-bottom: 2px;
+    background: #f1f1f1;
+    color: #7e7e7e;
+}

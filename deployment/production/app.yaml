@@ -1,0 +1,38 @@
+apiVersion: k8s.sandstorm.de/v1alpha1
+kind: OneContainerOnePort
+metadata:
+  namespace: materialvermittlung
+  name: app
+spec:
+  appName: materialvermittlung
+  description: 'materialvermittlung'
+  isProdDeploymentForCustomer: true
+
+  hostNames:
+    zuendstoffe.materialvermittlung.org: []
+
+  node: worker1
+  image: docker-hub.sandstorm.de/zuendstoffe/materialvermittlung:main
+
+  port: 80
+  stagingCertificates: false
+
+  env:
+    TRUSTED_HOSTS: zuendstoffe.materialvermittlung.org
+    TRUSTED_PROXIES: 127.0.0.1,REMOTE_ADDR
+
+  envFromConfigMaps:
+    - db
+    - materialvermittlung-env
+  envFromSecrets:
+    - db
+    - jwt
+    - smtp
+  volumes:
+    - name: media
+      mountPath: /srv/api/public/media
+
+  sso:
+    enabled: false
+
+  stopped: false
