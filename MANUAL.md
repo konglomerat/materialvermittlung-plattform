@@ -3,12 +3,6 @@
 This document explains the basic mechanisms of the platform and how to setup
 your environment for administration purposes.
 
-You can watch this video (in German) which shows the administration process or follow 
-the text below.
-
-
-
-https://user-images.githubusercontent.com/22657579/175914405-fa3768f5-5de0-4da9-b9e2-db882ad296a3.mp4
 
 ### Platform Mechanisms
 
@@ -41,13 +35,28 @@ A `Material` can be a draft, active, completed or reserved.
 
 ### Initial setup
 
+You can watch this video (in German) which shows the administration process or follow
+the text below.
+
+https://user-images.githubusercontent.com/22657579/175914405-fa3768f5-5de0-4da9-b9e2-db882ad296a3.mp4
+
 First, you'll need to add an `Organization`. Login with your admin account and click
-the link "Zur Adminstration" or open `yourdomain.org/admin`. You'll see the administration UI
-with the four entitites in the sidebar. Head to "Organisationen". Here you will later be able
-to manage all `Organizations`. Click the button "Organisation erstellen" in the top right,
+the link "Zur Administration" or open `yourdomain.org/admin`. You'll see the administration UI
+with the four entitites in the sidebar. 
+
+![](/docs/00-tutorial-admin-page.png)
+
+Head to "Organisationen". Here you will later be able
+to manage all `Organizations`. 
+
+![](/docs/01-tutorial-organization-page.png)
+
+Click the button "Organisation erstellen" in the top right,
 give your `Organization` a fitting name and add optional imprint information as well as contact
 addresses. You can either save or save and add another `Organization` by clicking "Erstellen"
 or "Erstellen und weiteres Element hinzufügen".
+
+![](/docs/02-tutorial-new-organization.png)
 
 Now you'll want at least one `User` in your `Organization`. The process of adding `Users` is
 identical to adding `Organizations` with the additional option to give the `User` the role of
@@ -57,26 +66,43 @@ of their `Organization`.
 After having added your `Organization` and `User(s)`, you'll also need a `Storage`. This again
 follows the same process as before at the "Lagerorte" page.
 
+Congrats! You're now ready to add some materials to your platform.
+
 ### Adding Material
 
 Every user is capable of adding `Material`. Once you log in, you'll see a plus symbol next to
 the main menu. Give your 'Material' a title and add some images and click 'Entwurf anlegen'.
+
+![](/docs/03-add-material.png)
+
 The `Material` is now saved as draft. You can now navigate through the tabs
 "Eigenschaften" (Properties), "Fotos" (Photos), "Abholung / Kontakt" (Pickup / Contact) to
 fill in more information such as how many pieces, kilos or meters of the `Material`
-are available, its origin, size and its `Storage` location.
+are available, its origin, size and its `Storage` location. The yellow exclamation marks indicate
+where you still need to add information.
+
+![](/docs/04-describe-material.png)
 
 Once you've added all required information, your `Material` will be ready to be published!
 Head to "Aktivieren", accept the T&C, add an optional time frame of availability and hit
 "Jetzt aktivieren". The `Material` is now live and visible on the frontpage of the
 Materialvermittlung.
 
+![](/docs/05-publish-material.png)
+
+
+
 
 ### Managing Material
 
 When pieces of your `Material` have been picked up, or you've got additional pieces by now,
 you can change the available amount. In the main menu you'll find "Unser Materialangebot"
-(Our Material offers). Head to the tab of active ("Aktiv") `Materials`, find the `Material`
-you want to edit and click the "Materialflüsse" (material flows) icon. In the opened window
+(Our Material offers). Head to the tab of active ("Aktiv") `Materials`.
+
+![](/docs/06-manage-material.png)
+
+Next,find the `Material` you want to edit and click the "Materialflüsse" (material flows) icon. In the opened window
 you can add outflows ("Abgänge"), e.g. picked up pieces, as well as inflows ("Zugänge"), e.g.
 additional pieces. By clicking on the flag icon, you can mark a 'Material' as completed.
+
+![](/docs/07-add-flow-material.png)
