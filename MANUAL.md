@@ -6,7 +6,9 @@ your environment for administration purposes.
 You can watch this video (in German) which shows the administration process or follow 
 the text below.
 
-![Tutorial](/docs/orga-admin.mp4)
+
+
+https://user-images.githubusercontent.com/22657579/175914405-fa3768f5-5de0-4da9-b9e2-db882ad296a3.mp4
 
 ### Platform Mechanisms
 
