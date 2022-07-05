@@ -30,5 +30,5 @@ See the [Contribution Section](CONTRIBUTING.md) to get started with developing.
 
 Developed by [Sandstorm Media GmbH](https://sandstorm.de/).
 
-Financed by [Konglomerat e.V.](https://konglomerat.org/) and [Zukunftsstadt Dresden](https://www.zukunftsstadt-dresden.de/).
+Initial development was coordinated by [Konglomerat e.V.](https://konglomerat.org/) and funded by the German Bundesministerium für Bildung und Forschung (BMBF) through [Zukunftsstadt Dresden](https://www.zukunftsstadt-dresden.de/).
 
