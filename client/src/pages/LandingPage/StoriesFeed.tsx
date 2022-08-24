@@ -15,6 +15,7 @@
 import React, { FC, useState, useEffect } from "react";
 import Parser, { Item } from "rss-parser";
 import StoryCard from "../../components/StoryCard";
+import { Button, Card } from "antd";
 
 const regex = /(https:\/\/materialvermittlung\.org\/wp-content\/uploads\/.+?)"/m;
 
@@ -27,15 +28,21 @@ const rssParser = new Parser({
 // @ts-ignore
 const StoriesFeed: FC = () => {
     const [stories, setStories] = useState<Item[]>([]);
+    const [allowExternalContent, setAllowExternalContent] = useState(
+        Boolean(sessionStorage.getItem("allowExternalFeed"))
+    );
+    const [feedHasBeenLoaded, setFeedHasBeenLoaded] = useState(false);
 
     useEffect(() => {
-        // IMPORTANT: we use an empty dependency array to only load the feed once!
-        rssParser.parseURL("/api/blog_feed", function (err, feed) {
-            if (feed) {
-                setStories(feed.items || []);
-            }
-        });
-    }, []);
+        if (allowExternalContent && !feedHasBeenLoaded) {
+            rssParser.parseURL("/api/blog_feed", function (err, feed) {
+                if (feed) {
+                    setStories(feed.items || []);
+                }
+            });
+            setFeedHasBeenLoaded(true);
+        }
+    }, [allowExternalContent]);
 
     const renderLoadedStories = () => {
         const storyNodes = stories.map((story) => {
@@ -80,11 +87,33 @@ const StoriesFeed: FC = () => {
         </>
     );
 
-    if (stories.length > 0) {
-        return renderLoadedStories();
-    } else {
-        return renderStoriesSkeleton();
+    const renderExternalContentConsentButton = () => (
+        <Card
+            style={{
+                display: "flex",
+                justifyContent: "center",
+            }}
+        >
+            <Button type="primary" onClick={handleAllowExternalContent}>
+                Externe Inhalte erlauben und Feed laden
+            </Button>
+        </Card>
+    );
+
+    const handleAllowExternalContent = () => {
+        sessionStorage.setItem("allowExternalFeed", "true");
+        setAllowExternalContent(true);
+    };
+
+    if (allowExternalContent) {
+        if (stories.length > 0) {
+            return renderLoadedStories();
+        } else {
+            return renderStoriesSkeleton();
+        }
     }
+
+    return renderExternalContentConsentButton();
 };
 
 export default StoriesFeed;

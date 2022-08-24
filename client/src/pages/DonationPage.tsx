@@ -13,11 +13,24 @@
  */
 
 // @ts-nocheck
-import React, { FC, useEffect } from "react";
-import { Row, Col, Typography } from "antd";
+import React, { FC, useEffect, useState } from "react";
+import { Row, Col, Typography, Button } from "antd";
 import Content from "../components/Layouts/Content";
 
 const DonationPage: FC = () => {
+    const [allowExternalContent, setAllowExternalContent] = useState(
+        Boolean(window._bp_iframe?.load_donation_iframe)
+    );
+    useEffect(() => {
+        if (allowExternalContent) {
+            const head = document.getElementsByTagName("head")[0];
+            const js = document.createElement("script");
+            js.type = "text/javascript";
+            js.src =
+                "https://betterplace-assets.betterplace.org/assets/load_donation_iframe.js";
+            head.appendChild(js);
+        }
+    }, [allowExternalContent]);
     /*
      * Configure at
      * https://www.betterplace.org/de/projects/92555-zuendstoffe-plattform-materialressourcen-optimaler-nutzen/manage/iframe_donation_form/new
@@ -101,9 +114,15 @@ const DonationPage: FC = () => {
                 </Col>
                 <Col md={12} span={24}>
                     <div id="betterplace_donation_iframe">
+                        <Button
+                            type="primary"
+                            onClick={() => setAllowExternalContent(true)}
+                        >
+                            Externe Inhalte erlauben & Spendenformular laden
+                        </Button>
                         <strong>
                             <a href="https://www.betterplace.org/de/donate/platform/projects/92555-zuendstoffe-plattform-materialressourcen-optimaler-nutzen">
-                                Jetzt Spenden für „Zündstoffe Plattform -
+                                Oder jetzt Spenden für „Zündstoffe Plattform -
                                 Materialressourcen optimaler nutzen" bei unserem
                                 Partner betterplace.org
                             </a>
